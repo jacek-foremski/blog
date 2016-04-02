@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Custom blog{% endblock %}</title>
-        {% block stylesheets %}
-            <!-- Bootstrap -->
-            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Custom blog{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
 
-            <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
-            {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 
-            <!-- Custom styles for this template -->
-            <link href="{{ asset('css/blog.css') }}" rel="stylesheet">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-            <script src="{{ asset('js/jquery.js') }}"></script>
-            <!-- Include all JavaScripts, compiled by Assetic -->
-            <script src="{{ asset('js/bootstrap.js') }}"></script>
-        {% endblock %}
-    </body>
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('css/blog.css') }}" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}
+</body>
 </html>
