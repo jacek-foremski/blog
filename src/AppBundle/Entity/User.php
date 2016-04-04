@@ -88,7 +88,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return array('ROLE_SUPER_ADMIN');
     }
 
     public function eraseCredentials()
