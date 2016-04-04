@@ -51,6 +51,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -69,3 +73,10 @@ assetic:
         cssrewrite: ~
 braincrafted_bootstrap:
     css_preprocessor: less
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+            blameable: true
+            softdeleteable: true

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/admin")
@@ -13,7 +14,7 @@ class AdminController extends Controller
     /**
      * @Route("/", name="admin_homepage")
      */
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
         return $this->render('admin/index.html.twig');
     }
@@ -21,9 +22,18 @@ class AdminController extends Controller
     /**
      * @Route("/users", name="admin_users_index")
      */
-    public function usersAction()
+    public function usersAction(Request $request)
     {
-        return $this->render('admin/users.html.twig');
+        $userRepository = $this->getDoctrine()->getRepository('AppBundle:User');
+        $users = $userRepository->createQueryBuilder('u');
+
+        $paginator  = $this->get('knp_paginator');
+        $paginatedUsers = $paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1)
+        );
+
+        return $this->render('admin/users.html.twig', array('paginatedUsers' => $paginatedUsers));
     }
 
 }

@@ -1,5 +1,47 @@
 {% extends ':admin:base.html.twig' %}
 
 {% block content %}
+    <h1>Index users</h1>
 
+    {# total items count #}
+    <p class="well">
+        Users count: {{ paginatedUsers.getTotalItemCount }}
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            {# sorting of properties based on query components #}
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Id', 'a.id') }}</th>
+            <th{% if paginatedUsers.isSorted('a.username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Username', 'a.username') }}</th>
+            <th{% if paginatedUsers.isSorted('a.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Email', 'a.email') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Is Active', 'a.is_active') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Created At', 'a.created_at') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Updated At', 'a.updated_at') }}</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        {# table body #}
+        <tbody>
+        {% for user in paginatedUsers %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td><span class="glyphicon {% if user.isActive %}glyphicon-thumbs-up{% else %}glyphicon-thumbs-down{% endif %}" aria-hidden="true"></span></td>
+                <td>{{ user.createdAt | date('Y-m-d H:i:s') }}</td>
+                <td>{{ user.updatedAt | date('Y-m-d H:i:s') }}</td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+
+
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(paginatedUsers) }}
+    </div>
 {% endblock %}
