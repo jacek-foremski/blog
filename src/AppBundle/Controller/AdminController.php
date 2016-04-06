@@ -16,7 +16,7 @@ class AdminController extends Controller
      */
     public function homepageAction(Request $request)
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render(':admin/default:index.html.twig');
     }
 
     /**
@@ -30,10 +30,12 @@ class AdminController extends Controller
         $paginator  = $this->get('knp_paginator');
         $paginatedUsers = $paginator->paginate(
             $users,
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            10,
+            array('defaultSortFieldName' => 'u.username', 'defaultSortDirection' => 'asc')
         );
 
-        return $this->render('admin/users.html.twig', array('paginatedUsers' => $paginatedUsers));
+        return $this->render(':admin/users:users.html.twig', array('paginatedUsers' => $paginatedUsers));
     }
 
 }

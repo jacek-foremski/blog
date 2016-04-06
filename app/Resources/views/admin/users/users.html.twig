@@ -11,12 +11,12 @@
         <thead>
         <tr>
             {# sorting of properties based on query components #}
-            <th>{{ knp_pagination_sortable(paginatedUsers, 'Id', 'a.id') }}</th>
-            <th{% if paginatedUsers.isSorted('a.username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Username', 'a.username') }}</th>
-            <th{% if paginatedUsers.isSorted('a.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Email', 'a.email') }}</th>
-            <th>{{ knp_pagination_sortable(paginatedUsers, 'Is Active', 'a.is_active') }}</th>
-            <th>{{ knp_pagination_sortable(paginatedUsers, 'Created At', 'a.created_at') }}</th>
-            <th>{{ knp_pagination_sortable(paginatedUsers, 'Updated At', 'a.updated_at') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Id', 'u.id') }}</th>
+            <th{% if paginatedUsers.isSorted('u.username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Username', 'u.username') }}</th>
+            <th{% if paginatedUsers.isSorted('u.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginatedUsers, 'Email', 'u.email') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Is Active', 'u.isActive') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Created At', 'u.createdAt') }}</th>
+            <th>{{ knp_pagination_sortable(paginatedUsers, 'Updated At', 'u.updatedAt') }}</th>
             <th>Actions</th>
         </tr>
         </thead>
