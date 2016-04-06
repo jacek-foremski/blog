@@ -2,9 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\BlameableEntityWithAssociation;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -21,7 +21,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class User implements AdvancedUserInterface, \Serializable
 {
     use TimestampableEntity;
-    use BlameableEntity;
+    use BlameableEntityWithAssociation;
     use SoftDeleteableEntity;
 
     /**
