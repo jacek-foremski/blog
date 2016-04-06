@@ -31,4 +31,5 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Add SEO management
 * Make frontend beautiful
 * Add media (videos and pictures) management
+* Cache frontend database responses
 * ... and many, many more
