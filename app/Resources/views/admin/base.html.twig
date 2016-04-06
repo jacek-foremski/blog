@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ knp_menu_render('admin_main',  { 'style': 'justified-pills' }) }}
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid">
+        {{ knp_menu_render('admin_main',  { 'style': 'justified-pills' }) }}
+    </div>
+    <div class="container-fluid">
+        {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+        {% block content %}
+        {% endblock %}
+    </div>
 {% endblock %}

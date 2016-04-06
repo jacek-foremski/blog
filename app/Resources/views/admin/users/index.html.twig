@@ -4,9 +4,17 @@
     <h1>Index users</h1>
 
     {# total items count #}
-    <p class="well">
-        Users count: {{ paginatedUsers.getTotalItemCount }}
-    </p>
+    <div class="row">
+        <p class="well">
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+
+                <a href="{{ path('admin_users_create') }}" type="button" class="btn btn-success">Create</a>
+
+            {% endif %}
+
+            Users count: {{ paginatedUsers.getTotalItemCount }}
+        </p>
+    </div>
     <table class="table">
         <thead>
         <tr>
@@ -27,13 +35,15 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td><span class="glyphicon {% if user.isActive %}glyphicon-thumbs-up{% else %}glyphicon-thumbs-down{% endif %}" aria-hidden="true"></span></td>
+                <td>
+                    <span class="glyphicon {% if user.isActive %}glyphicon-thumbs-up{% else %}glyphicon-thumbs-down{% endif %}"
+                          aria-hidden="true"></span></td>
                 <td>{{ user.createdAt | date('Y-m-d H:i:s') }}</td>
                 <td>{{ user.updatedAt | date('Y-m-d H:i:s') }}</td>
                 <td>
-                    {% if is_granted('ROLE_ADMIN') %}
-
-
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <a href="{{ path('admin_users_edit', {'id': user.id}) }}" type="button" class="btn btn-warning">Edit</a>
+                        <a href="{{ path('admin_users_remove', {'id': user.id}) }}" type="button" class="btn btn-danger">Delete</a>
                     {% endif %}
                 </td>
             </tr>

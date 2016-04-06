@@ -11,10 +11,9 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Custom login page
 * Admin Panel with menu
 * Users Entity (Timestampable, Blameable and SoftDeleteable)
-* Listing Users in Admin Panel with pagination
+* Listing, creating, editing and deleting Users in Admin Panel with pagination
 
 **Planned features:**
-* Add possibility to create, edit and delete Users from Admin Panel
 * Create Blog Post Entity
 * Add possibility to list, create, edit and delete Blog Posts from Admin Panel
 * Make blog frontend dynamically generated from database
