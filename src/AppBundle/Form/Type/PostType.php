@@ -13,7 +13,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', null, array('attr' => array('class' => 'tinymce')))
             ->add('is_active', CheckboxType::class, array('required' => false))
             ->add('save', SubmitType::class, array('label' => 'Save'));
     }

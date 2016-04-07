@@ -46,7 +46,8 @@
         "symfony/assetic-bundle": "^2.7.1",
         "knplabs/knp-menu-bundle": "^2.1.1",
         "knplabs/knp-paginator-bundle": "^2.5.1",
-        "stof/doctrine-extensions-bundle": "^1.2.2"
+        "stof/doctrine-extensions-bundle": "^1.2.2",
+        "stfalcon/tinymce-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
