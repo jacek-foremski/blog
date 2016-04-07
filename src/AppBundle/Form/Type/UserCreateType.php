@@ -23,7 +23,7 @@ class UserCreateType extends AbstractType
                 'second_options' => array('label' => 'Repeat Password'),
             ))
             ->add('is_active', CheckboxType::class, array('required' => false))
-            ->add('save', SubmitType::class, array('label' => 'Create User'))
+            ->add('save', SubmitType::class, array('label' => 'Save'))
         ;
     }
 }

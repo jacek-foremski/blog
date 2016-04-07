@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Post;
 use AppBundle\Entity\User;
+use AppBundle\Form\Type\PostType;
 use AppBundle\Form\Type\UserCreateType;
 use AppBundle\Form\Type\UserEditType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -108,4 +110,86 @@ class AdminController extends Controller
         return $this->redirectToRoute('admin_users_index');
     }
 
+    /**
+     * @Route("/posts", name="admin_posts_index")
+     */
+    public function postsAction(Request $request)
+    {
+        $postRepository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $posts = $postRepository->createQueryBuilder('p');
+
+        $paginator = $this->get('knp_paginator');
+        $paginatedPosts = $paginator->paginate(
+            $posts,
+            $request->query->getInt('page', 1),
+            10,
+            array('defaultSortFieldName' => 'p.title', 'defaultSortDirection' => 'asc')
+        );
+
+        return $this->render(':admin/posts:index.html.twig', array('paginatedPosts' => $paginatedPosts));
+    }
+
+    /**
+     * @Route("/posts/create", name="admin_posts_create")
+     */
+    public function postsCreateAction(Request $request)
+    {
+        $post = new Post();
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            $this->addFlash('success', 'Post has been added');
+            return $this->redirectToRoute('admin_posts_index');
+        }
+
+        return $this->render(':admin/posts:create.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/posts/{id}/edit", name="admin_posts_edit", requirements={"id" = "\d+"})
+     */
+    public function postsEditAction(Request $request, $id)
+    {
+        $postRepository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $post = $postRepository->find($id);
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            $this->addFlash('success', 'Post has been edited');
+            return $this->redirectToRoute('admin_posts_index');
+        }
+
+        return $this->render(':admin/posts:edit.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/posts/{id}/remove", name="admin_posts_remove", requirements={"id" = "\d+"})
+     */
+    public function postsRemoveAction(Request $request, $id)
+    {
+        $postRepository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $post = $postRepository->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('success', 'Post has been removed');
+        return $this->redirectToRoute('admin_posts_index');
+    }
+    
 }

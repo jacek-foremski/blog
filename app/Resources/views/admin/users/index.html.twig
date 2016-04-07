@@ -7,9 +7,7 @@
     <div class="row">
         <p class="well">
             {% if is_granted('ROLE_SUPER_ADMIN') %}
-
                 <a href="{{ path('admin_users_create') }}" type="button" class="btn btn-success">Create</a>
-
             {% endif %}
 
             Users count: {{ paginatedUsers.getTotalItemCount }}
@@ -43,7 +41,8 @@
                 <td>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <a href="{{ path('admin_users_edit', {'id': user.id}) }}" type="button" class="btn btn-warning">Edit</a>
-                        <a href="{{ path('admin_users_remove', {'id': user.id}) }}" type="button" class="btn btn-danger">Delete</a>
+                        <a href="{{ path('admin_users_remove', {'id': user.id}) }}" type="button"
+                           class="btn btn-danger">Delete</a>
                     {% endif %}
                 </td>
             </tr>

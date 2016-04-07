@@ -26,6 +26,9 @@ class MenuBuilder
         if($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN') !== false) {
             $menu->addChild('Users', array('route' => 'admin_users_index'));
         }
+        if($this->authorizationChecker->isGranted('ROLE_ADMIN') !== false) {
+            $menu->addChild('Posts', array('route' => 'admin_posts_index'));
+        }
 
         return $menu;
     }

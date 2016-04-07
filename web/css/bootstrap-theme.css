@@ -28,6 +28,10 @@
     margin-left: auto;
 }
 
+.color {
+    background-color: #e0e0e0;
+}
+
 .btn-default,
 .btn-primary,
 .btn-success,

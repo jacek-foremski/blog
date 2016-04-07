@@ -80,3 +80,4 @@ stof_doctrine_extensions:
             timestampable: true
             blameable: true
             softdeleteable: true
+            sluggable: true

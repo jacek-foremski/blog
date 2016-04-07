@@ -9,7 +9,7 @@ trait BlameableEntityWithAssociation
 {
     /**
      * @Gedmo\Blameable(on="create")
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", fetch="EAGER")
      */
     protected $createdBy;
 

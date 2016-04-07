@@ -13,7 +13,6 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
     {
         $firstPost = new Post();
         $firstPost->setTitle('Sample blog post');
-        $firstPost->setSlug('sample-blog-post');
         $firstPost->setContent('This blog post shows a few different types of content that\'s supported and styled with Bootstrap. Basic typography, images, and code are all supported.
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
@@ -51,7 +50,6 @@ Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at
 
         $secondPost = new Post();
         $secondPost->setTitle('Another blog post');
-        $secondPost->setSlug('another-blog-post');
         $secondPost->setContent('Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
@@ -67,7 +65,6 @@ Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis moll
 
         $thirdPost = new Post();
         $thirdPost->setTitle('New feature');
-        $thirdPost->setSlug('new-feature');
         $thirdPost->setContent('Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
 
 Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
