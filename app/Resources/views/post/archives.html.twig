@@ -1,0 +1,6 @@
+<h4>Archives</h4>
+<ol class="list-unstyled">
+    {% for month in distinctMonths %}
+        <li><a href="{{ path('archive', {'month':month.month | date('Y-m')}) }}">{{ month.month | date('F Y') }}</a></li>
+    {% endfor %}
+</ol>

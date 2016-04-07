@@ -13,6 +13,17 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig');
+        $postRepository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $posts = $postRepository->findAllActive();
+
+        $paginator = $this->get('knp_paginator');
+        $paginatedPosts = $paginator->paginate(
+            $posts,
+            $request->query->getInt('page', 1),
+            3,
+            array('defaultSortFieldName' => 'p.createdAt', 'defaultSortDirection' => 'desc')
+        );
+
+        return $this->render('default/index.html.twig', array('paginatedPosts' => $paginatedPosts));
     }
 }

@@ -125,11 +125,10 @@ h6, .h6 {
   margin-bottom: 60px;
   text-align: left;
 }
-.pager > li > a {
+.pager li > a, .pager li > span {
   width: 140px;
   padding: 10px 20px;
   text-align: center;
-  border-radius: 30px;
 }
 
 

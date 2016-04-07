@@ -13,9 +13,11 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Users Entity (Timestampable, Blameable and SoftDeleteable)
 * Post Entity (Timestampable, Blameable, SoftDeleteable and Sluggable)
 * Listing, creating, editing and deleting Users and Posts in Admin Panel with pagination
+* Blog frontend dynamically generated from database
+* Archives generated dynamically
 
 **Planned features:**
-* Make blog frontend dynamically generated from database
+* Add tinymce to Post edit
 * Add tests
 * Minimize assets with Assetic
 * Add registration pagge
@@ -30,4 +32,5 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Make frontend beautiful
 * Add media (videos and pictures) management
 * Cache frontend database responses
+* Add "publish date" field to Post
 * ... and many, many more

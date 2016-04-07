@@ -1,0 +1,11 @@
+{% extends ':default:layout.html.twig' %}
+
+{% block content %}
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ post.title }}</h2>
+        <p class="blog-post-meta">{{ post.createdAt | date('F j, Y') }} by <a href="#">{{ post.createdBy.username }}</a>
+        </p>
+        {{ post.content | raw }}
+    </div><!-- /.blog-post -->
+{% endblock %}
+

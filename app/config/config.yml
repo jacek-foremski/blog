@@ -55,6 +55,9 @@ doctrine:
             softdeleteable:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled: true
+        dql:
+            datetime_functions:
+                 date_trunc: AppBundle\DoctrineExtensions\DateTrunc
 
 # Swiftmailer Configuration
 swiftmailer:
