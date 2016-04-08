@@ -3,7 +3,7 @@
 {% block content %}
     {% for post in paginatedPosts %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="{{ path('show_post', {'slug' : post.slug}) }}"> {{ post.title }}</a>
+            <h2 class="blog-post-title"><a href="{{ path('show_post', {'slug' : post.slug}) }}">{{ post.title }}</a>
             </h2>
             <p class="blog-post-meta">{{ post.createdAt | date('F j, Y') }} by <a
                         href="#">{{ post.createdBy.username }}</a></p>

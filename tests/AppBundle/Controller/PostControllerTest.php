@@ -9,36 +9,34 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class PostControllerTest extends WebTestCase
 {
     /**
      * @var \Symfony\Bundle\FrameworkBundle\Client
      */
     private $client;
 
-    public function testIndex()
+    public function testPost()
     {
-        $crawler = $this->client->request('GET', '/');
+        $crawler = $this->client->request('GET', '/post/sample-blog-post');
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertEquals(1, $crawler->filter('h1')->count());
+        $this->assertEquals(1, $crawler->filter('h2')->count());
     }
 
-    public function test404()
+    public function testNotExistentPost()
     {
-        $this->client->request('GET', '/the-page-that=doesn\'t exist');
-
+        $this->client->request('GET', '/post/that-doesn\'t-exists');
+        
         $this->assertTrue($this->client->getResponse()->isNotFound());
     }
 
-    public function testDynamicPosts()
+    public function testDynamicArchives()
     {
         $crawler = $this->client->request('GET', '/');
 
-        $this->assertGreaterThan(0, $crawler->filter('h2')->count());
-
-        $postHeaders = $crawler->filter('h2 > a');
-        $this->assertEquals('Sample blog post', $postHeaders->text());
+        $postHeaders = $crawler->filter('h4 ~ ol > li');
+        $this->assertEquals('December 2013', $postHeaders->text());
 
         $postHeadersValues = $postHeaders->extract(array('_text'));
         foreach ($postHeadersValues as $postHeaderValue) {
@@ -46,6 +44,22 @@ class DefaultControllerTest extends WebTestCase
             $this->client->click($link);
             $this->assertTrue($this->client->getResponse()->isSuccessful());
         }
+    }
+
+    public function testArchive()
+    {
+        $crawler = $this->client->request('GET', '/archive/2013-12');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertGreaterThan(0, $crawler->filter('h2')->count());
+    }
+
+    public function testEmptyArchive()
+    {
+        $crawler = $this->client->request('GET', '/archive/2123-12');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals(0, $crawler->filter('h2')->count());
     }
 
     /**

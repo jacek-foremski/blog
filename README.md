@@ -4,7 +4,7 @@ Nathanael's Blog
 Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bundles. Main focus of the project is the backend - I added Bootstrap so it wouldn't look too ugly.
 
 **Current features:**
-* Blog skeleton frontend (not dynamically generated yet)
+* Blog frontend dynamically generated from database
 * Bootstrap theme
 * Authentication from database
 * Fixtures to populate database
@@ -13,11 +13,10 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Users Entity (Timestampable, Blameable and SoftDeleteable)
 * Post Entity (Timestampable, Blameable, SoftDeleteable and Sluggable)
 * Listing, creating, editing and deleting Users and Posts in Admin Panel with pagination
-* Blog frontend dynamically generated from database
 * Archives generated dynamically
 
 **Planned features:**
-* Add tests
+* Add tests for admin area
 * Minimize assets with Assetic
 * Add registration pagge
 * Allow logged in users to comment on blog posts
