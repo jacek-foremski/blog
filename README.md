@@ -16,7 +16,6 @@ Showcase Symfony project featuring custom blog. Build using Symfony 3 and its bu
 * Archives generated dynamically
 
 **Planned features:**
-* Add tests for admin area
 * Minimize assets with Assetic
 * Add registration pagge
 * Allow logged in users to comment on blog posts
